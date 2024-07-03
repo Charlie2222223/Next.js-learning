@@ -36,6 +36,11 @@ function FiverrBusiness() {
                 </button>
             </div>
             <div className="relative h-[512px] w-2/3">
+            {/*
+                relative：相対位置を設定し、内部の絶対位置の要素がこのdivを基準に配置される。
+                h-[512px]：高さを512ピクセルに設定。
+                w-2/3：幅を親要素の3分の2に設定。
+            */}
                 <Image src="/business.webp" alt="business" fill />
             </div>
         </div>

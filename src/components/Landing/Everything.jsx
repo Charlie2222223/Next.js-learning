@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import { BsCheckCircle } from "react-icons/bs";
-
+import { BsCheckCircle } from "react-icons/bs"; //チェックマークのアイコンを使用する
 /**
  * サービスの様々な特徴やメリットを説明するオブジェクトの配列です。
  * 各オブジェクトはtitle（タイトル）とsubtitle（サブタイトル）を持っています。
@@ -27,7 +26,10 @@ function Everything() {
     ];
 
     return (
-        <div className="bg-[#f1fdf7] flex py-20 justify-between px-24">
+        <div className="bg-[#f1fdf7] flex py-20 justify-between px-24"> 
+        {/*
+            justify-between：子要素を左右に配置し、間に空間を空けます
+        */}
             <div>
                 <h2 className="text-4xl mb-5 text-[#404145] font-bold">
                     The best part? Everything.
@@ -36,7 +38,7 @@ function Everything() {
                     {everythingData.map(({ title, subtitle }) => (
                         <li key={title}>
                             <div className="flex gap-2 items-center text-xl">   {/*内部の要素が水平方向に配置される*/}
-                                <BsCheckCircle className="text-[#62646a]" />
+                                <BsCheckCircle className="text-[#62646a]" />    {/*ここでチェックマークを適用*/}
                                 <h4>{title}</h4>
                             </div>
                             <p className="text-[#62646a]">{subtitle}</p>
