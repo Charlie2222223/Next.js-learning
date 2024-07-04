@@ -45,6 +45,10 @@ const popularServicesData = [
     },
 ];
 
+/**
+ * Fiverrの人気サービスを一覧表示
+ * 各サービスはクリック可能で、対応する検索ページにリダイレクトされる
+ */
 function PopularServices() {
     const router = useRouter();
 
@@ -56,7 +60,7 @@ function PopularServices() {
                     <li
                         key={name}
                         className="relative cursor-pointer"
-                        onClick={() => router.push(`/search?q=${name.toLowerCase()}`)}
+                        onClick={() => router.push(`/search?q=${name.toLowerCase()}`)}  //onClickイベントで、サービス名をクエリとして検索ページにリダイレクトする
                     >
                         <div className="absolute z-10 text-white left-5 top-4">
                             <span>{label}</span>

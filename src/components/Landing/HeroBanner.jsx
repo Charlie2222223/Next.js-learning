@@ -1,19 +1,27 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useRouter } from "next/router";    //ルーターはページ遷移を管理するために使用
 import React, { useEffect, useState } from "react";
 
+/**
+ * ウェブページのヒーローバナーセクションとして、背景画像のスライドショーと検索バー、人気のサービスリンクを表示
+ */
 function HeroBanner() {
     const router = useRouter();
-    const [image, setImage] = useState(3);
+    const [image, setImage] = useState(3); //useStateでimageという状態を定義し、初期値を3に設定。
 
     useEffect(() => {
-        const interval = setInterval(() => setImage(image > 6 ? 1 : image + 1), 10000);
+        const interval = setInterval(() => setImage(image > 6 ? 1 : image + 1), 10000);        //useEffectを使用して、10秒ごとにimage状態を更新するタイマーを設定します   
         return () => clearInterval(interval);
     }, [image]);
 
     return (
-        <div className="h-[680px] relative bg-cover">
+        <div className="h-[680px] relative bg-cover">   {/*バナーの高さを680ピクセルに設定し、背景画像をカバーするように配置*/}
             <div className="absolute top-0 right-0 w-[110vw] h-full transition-opacity z-0">
+                {/*
+                    absoluteクラスを使用して、背景画像のスライドショーを実装。
+                    それぞれのImageコンポーネントは、異なる背景画像を表示し、fill属性を使って親要素を完全にカバー。
+                    classNameプロパティを使用して、現在表示されるべき画像にopacity-100を、その他の画像にopacity-0を適用し、スライドショーの切り替えを実現
+                */}
                 <Image
                     alt="hero"
                     src="/bg-hero1.webp"
@@ -58,6 +66,11 @@ function HeroBanner() {
                     <br />
                     services for your business.
                 </h1>
+                    {/*
+                        z-1 relative w-[650px] flex justify-center flex-col h-full gap-5 ml-20のクラスを持つdiv要素は、
+                        テキストと検索バーを含むセクションのスタイルを設定。
+                        h1タグでメインメッセージを表示し、text-white、text-5xl、leading-snugのクラスでスタイルを設定。
+                    */}
                 <div className="flex align-middle">
                     <div className="relative">
                         <input

@@ -3,6 +3,9 @@ import FiverrLogo from "../FivierrLogo";  //ローカルファイルからイン
 import { BsCheckCircle } from "react-icons/bs";
 import Image from "next/image";
 
+/**
+ * Fiverrのビジネス向けサービスを紹介するセクションを作成
+ */
 function FiverrBusiness() {
     return (
         <div className="bg-[#004aad] px-20 py-16 flex gap-10">

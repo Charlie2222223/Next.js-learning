@@ -1,15 +1,16 @@
 import Image from "next/image"; //Next.jsアプリケーションでの画像処理を最適化する
 import React from "react";
 
-/*
-複数のブランドロゴを表示するためのHTML構造を返す
-*/
+/**
+ * 複数のブランドロゴを表示するためのHTML構造を返す
+ */
 function Companies(){
     return(
-        <div className="flex items-center text-gray-400 text-2xl font-bold min-h-[11vh] ">
+        <div className="flex items-center justify-center text-gray-400 text-2xl font-bold min-h-[11vh] ">
             {/*
                 flex：Flexboxレイアウトを使用して、内部の子要素を横に並べる。
                 items-center：Flexboxの子要素を垂直方向に中央揃えにする。
+                justify-center : フッター内のコンテンツを中央揃えにする。   
                 text-2xl：テキストのサイズを2倍の大きさ（通常の2倍）に設定します。
                 min-h-[11vh]：このクラスは、div要素の最小高さをビューポートの高さの11%に設定します。これにより、この要素の高さが常にビューポートの11%であることが保証されます。
             */}

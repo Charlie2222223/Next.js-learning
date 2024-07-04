@@ -1,9 +1,12 @@
-import Link from "next/link";
+import Link from "next/link";   //Next.jsでページ遷移を管理するために使用
 import React from "react";
 import { FiGithub, FiInstagram, FiYoutube, FiLinkedin, FiTwitter } from "react-icons/fi";
-import FiverrLogo from "./FiverrLogo";
-import { categories } from "../../utils/categories";
+import FiverrLogo from "./FivierrLogo";
+import { categories } from "@/utils/categories"
 
+/**
+ * ウェブサイトのフッターセクションを作成します。フッターにはカテゴリリンク、サポートリンク、コミュニティリンク、ソーシャルメディアリンクなどが含まれています
+ */
 function Footer() {
     const socialLinks = [
         { name: "Github", icon: <FiGithub />, link: "https://www.github.com" },
