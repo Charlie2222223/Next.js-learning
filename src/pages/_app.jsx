@@ -9,7 +9,7 @@ import "@/styles/globals.css";
 export default function App({ Component, pageProps }) {
   return (
     <div>
-      <div className="mb-auto w-full mx-auto">
+      <div className="w-full mx-auto mb-auto">
         <Component {...pageProps} />
       </div>
       <Footer />

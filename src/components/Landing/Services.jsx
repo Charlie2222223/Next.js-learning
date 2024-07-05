@@ -12,7 +12,7 @@ function Services() {
     return (
         <div className="mx-20 my-16">
             <h2 className="text-4xl mb-10 text-[#404145] font-bold">You need it, we've got it</h2>
-            <ul className="grid grid-cols-5 gap-10">
+            <ul className="grid justify-center grid-cols-5 gap-10">
                 {categories.map(({ name, logo }) => (
                     <li
                         key={name}
