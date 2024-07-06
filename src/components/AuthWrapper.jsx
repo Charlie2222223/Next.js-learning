@@ -1,4 +1,4 @@
-import { reducerCases } from '@/context/Constants';
+import { reducerCases } from '@/context/constants';
 import { useStateProvider } from '@/context/StateContext';
 import React, { useState } from 'react'
 import { FcGoogle } from "react-icons/fc";

@@ -1,6 +1,8 @@
 import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
+import authRoutes from "./routes/AuthRoutes";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -13,7 +15,10 @@ app.use(cors(
     credentials: true,
 }));
 
+app.use(cookieParser());
 app.use(express.json());
+
+app.use("/api/auth", authRoutes);
 
 app.listen(port, () => {
     console.log(`server is running at http://localhost:${port}`);  // バックティックと正しい変数名を使用
