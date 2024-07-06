@@ -1,4 +1,6 @@
 import Footer from "@/components/Footer";
+import { StateProvider } from "@/context/StateContext";
+import reducer, { initialState } from "@/context/StateReducers";
 import "@/styles/globals.css";
 
 /**
@@ -8,11 +10,12 @@ import "@/styles/globals.css";
  */
 export default function App({ Component, pageProps }) {
   return (
-    <div>
+    <StateProvider initialState={initialState} reducer={reducer}>
       <div className="w-full mx-auto mb-auto">
         <Component {...pageProps} />
       </div>
+      
       <Footer />
-    </div>
+    </StateProvider>
   );
 }

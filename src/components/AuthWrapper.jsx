@@ -1,8 +1,16 @@
-import React from 'react'
+import { useStateProvider } from '@/context/StateContext';
+import React, { useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
 import { MdFacebook } from "react-icons/md";
 
-function AuthWrapper() {
+function AuthWrapper({ type }) {
+    const [{ showLoginModal, showSignupModal }, dispatch] = useStateProvider();
+    const [values, setValues] = useState({ email: "", password: "" });
+
+    const handleChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+    }
+
     return (
         <div className="fixed top-0 z-[100]">
             <div
@@ -15,7 +23,9 @@ function AuthWrapper() {
                     id="auth-model"
                 >
                     <div className="flex flex-col items-center justify-center p-8 gap-7">
-                        <h3 className='text-2xl font-semibold to-slate-700'>Login to Fiverr</h3>
+                        <h3 className='text-2xl font-semibold to-slate-700'>
+                            {type === "login" ? "Login to Fiverr" : "Signup to Fiverr"}
+                        </h3>
                         <div className="flex flex-col gap-5">
                             <button className="relative flex items-center justify-center p-3 font-semibold text-white bg-blue-500 w-80">
                                 <MdFacebook className="absolute text-2xl left-4" />
@@ -27,7 +37,7 @@ function AuthWrapper() {
                             </button>
                         </div>
                         <div className="relative w-full text-center">
-                            <span className="before:content-[''] before:w-80 before:h-[0.5px] before:absolute before:top-[50%] before:left-0 before:bg-gray-500"></span>
+                            <span className="absolute left-0 top-1/2 w-full h-[0.5px] bg-gray-300"></span>
                             <span className="relative z-10 px-2 bg-white">OR</span>
                         </div>
                         <div className='flex flex-col gap-5'>
@@ -36,23 +46,31 @@ function AuthWrapper() {
                                 name='email'
                                 placeholder='Email'
                                 className='p-3 border border-slate-300 w-80'
+                                value={values.email}
+                                onChange={handleChange}
                             />
                             <input
                                 type='password'
                                 name='password'
                                 placeholder='Password'
                                 className='p-3 border border-slate-300 w-80'
+                                value={values.password}
+                                onChange={handleChange}
                             />
                             <button className='bg-[#1DBF73] text-white px-12 text-lg font-semibold rounded-r-md p-3 w-80'>
                                 Continue
                             </button>
                         </div>
                     </div>
-                    <div className='flex items-start justify-center w-full py-5 border border-r-slate-400'>
+                    <div className='flex items-start justify-center w-full py-5 border-t border-slate-400'>
                         <span className='text-sm text-slate-700'>
-                            Not a member yes? {" "}
-                            <span className='text-[#1DBF73] cursor-pointer'>Join How</span>    
-                        </span>       
+                            Not a member yet? {" "}
+                            {type === "login" ?
+                                <span className='text-[#1DBF73] cursor-pointer'>Join Now</span> 
+                                :
+                                <span className='text-[#1DBF73] cursor-pointer'>Login Now</span>
+                            }
+                        </span>
                     </div>
                 </div>
             </div>
