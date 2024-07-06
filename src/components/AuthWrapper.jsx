@@ -1,3 +1,4 @@
+import { reducerCases } from '@/context/Constants';
 import { useStateProvider } from '@/context/StateContext';
 import React, { useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
@@ -64,12 +65,41 @@ function AuthWrapper({ type }) {
                     </div>
                     <div className='flex items-start justify-center w-full py-5 border-t border-slate-400'>
                         <span className='text-sm text-slate-700'>
-                            Not a member yet? {" "}
-                            {type === "login" ?
-                                <span className='text-[#1DBF73] cursor-pointer'>Join Now</span> 
-                                :
-                                <span className='text-[#1DBF73] cursor-pointer'>Login Now</span>
-                            }
+                            {type === "login" ? (
+                            <>
+                                Not a member yet? {" "}
+                                <span className='text-[#1DBF73] cursor-pointer'
+                                onClick={()=> {
+                                    dispatch({
+                                        type:reducerCases.TOGGLE_LOGIN_MODAL,
+                                        showLoginModal:false
+                                    })
+                                    dispatch({
+                                        type:reducerCases.TOGGLE_SIGNUP_MODAL,
+                                        showSignupModal:true
+                                    })
+                                }}>
+                                    Join Now
+                                </span> 
+                            </>
+                                ):(
+                                <>
+                                Already a member yet? {" "}
+                                <span className='text-[#1DBF73] cursor-pointer'
+                                onClick={()=>{
+                                    dispatch({
+                                        type:reducerCases.TOGGLE_SIGNUP_MODAL,
+                                        showSignupModal:false
+                                    })
+                                    dispatch({
+                                        type:reducerCases.TOGGLE_LOGIN_MODAL,
+                                        showLoginModal:true
+                                    })
+                                }}>
+                                    Login Now
+                                </span>
+                                </>
+                            )}
                         </span>
                     </div>
                 </div>
