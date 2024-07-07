@@ -13,7 +13,7 @@ function Services() {
         <div className="mx-20 my-16">
             <h2 className="text-4xl mb-10 text-[#404145] font-bold">You need it, we've got it</h2>
             <ul className="grid justify-center grid-cols-5 gap-10">
-                {categories.map(({ name, logo }) => (
+                {categories.map(({ name, logo }, index) => (
                     <li
                         key={name}
                         /*
@@ -28,12 +28,18 @@ function Services() {
                             border-transparent：デフォルトで透明なボーダーを設定します。
                             p-5：パディングを5単位設定します。
                             transition-all：すべてのプロパティのトランジションを設定します。
-                            duration-5：トランジションの期間を設定します。
+                            duration-500：トランジションの期間を0.5秒に設定します。
                         */
-                        className="flex flex-col justify-center items-center cursor-pointer hover:shadow-2xl hover:border-[#1D8F73] border-2 border-transparent p-5 transition-all duration-5"
+                        className="flex flex-col justify-center items-center cursor-pointer hover:shadow-2xl hover:border-[#1D8F73] border-2 border-transparent p-5 transition-all duration-500"
                         onClick={() => router.push(`/search?category=${name}`)}
                     >
-                        <Image src={logo} alt="category" height={50} width={50} />
+                        <Image 
+                            src={logo} 
+                            alt="category" 
+                            height={50} 
+                            width={50} 
+                            priority={index === 0} // 最初の画像のみ優先的にロード
+                        />
                         <span>{name}</span>
                     </li>
                 ))}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { BsCheckCircle } from "react-icons/bs"; //チェックマークのアイコンを使用する
+
 /**
  * サービスの様々な特徴やメリットを説明するオブジェクトの配列です。
  * 各オブジェクトはtitle（タイトル）とsubtitle（サブタイトル）を持っています。
@@ -26,19 +27,19 @@ function Everything() {
     ];
 
     return (
-        <div className="bg-[#f1fdf7] flex py-20 justify-between px-24"> 
-        {/*
-            justify-between：子要素を左右に配置し、間に空間を空けます
-        */}
+        <div className="bg-[#f1fdf7] flex py-20 justify-between px-24">
+            {/*
+                justify-between：子要素を左右に配置し、間に空間を空けます
+            */}
             <div>
                 <h2 className="text-4xl mb-5 text-[#404145] font-bold">
                     The best part? Everything.
                 </h2>
-                <ul className="flex flex-col gap-10">         {/*リストアイテムは垂直方向（列方向）に配置され、アイテム間にはgap-10による間隔が設定される*/}
+                <ul className="flex flex-col gap-10">
                     {everythingData.map(({ title, subtitle }) => (
                         <li key={title}>
-                            <div className="flex gap-2 items-center text-xl">   {/*内部の要素が水平方向に配置される*/}
-                                <BsCheckCircle className="text-[#62646a]" />    {/*ここでチェックマークを適用*/}
+                            <div className="flex items-center gap-2 text-xl">
+                                <BsCheckCircle className="text-[#62646a]" />
                                 <h4>{title}</h4>
                             </div>
                             <p className="text-[#62646a]">{subtitle}</p>
@@ -46,8 +47,14 @@ function Everything() {
                     ))}
                 </ul>
             </div>
-            <div className="relative h-96 w-2/4">           {/*内部の絶対位置の要素がこのdivを基準に配置される*/}
-                <Image src="/everything.webp" fill alt="everything" />  {/**fileは内部の絶対位置の要素がこのdivを基準に配置され画像がコンテナ全体をカバーされる*/}
+            <div className="relative w-2/4 h-96">
+                <Image
+                    src="/everything.webp"
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    alt="everything"
+                    priority
+                />
             </div>
         </div>
     );

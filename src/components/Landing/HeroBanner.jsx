@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRouter } from "next/router";    //ルーターはページ遷移を管理するために使用
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 /**
@@ -7,15 +7,15 @@ import React, { useEffect, useState } from "react";
  */
 function HeroBanner() {
     const router = useRouter();
-    const [image, setImage] = useState(3); //useStateでimageという状態を定義し、初期値を3に設定。
+    const [image, setImage] = useState(3); // useStateでimageという状態を定義し、初期値を3に設定。
 
     useEffect(() => {
-        const interval = setInterval(() => setImage(image > 6 ? 1 : image + 1), 10000);        //useEffectを使用して、10秒ごとにimage状態を更新するタイマーを設定します   
+        const interval = setInterval(() => setImage(image > 6 ? 1 : image + 1), 10000); // useEffectを使用して、10秒ごとにimage状態を更新するタイマーを設定します   
         return () => clearInterval(interval);
     }, [image]);
 
     return (
-        <div className="h-[680px] relative bg-cover">   {/*バナーの高さを680ピクセルに設定し、背景画像をカバーするように配置*/}
+        <div className="h-[680px] relative bg-cover">   {/* バナーの高さを680ピクセルに設定し、背景画像をカバーするように配置 */}
             <div className="absolute top-0 right-0 w-[110vw] h-full transition-opacity z-0">
                 {/*
                     absoluteクラスを使用して、背景画像のスライドショーを実装。
@@ -26,52 +26,60 @@ function HeroBanner() {
                     alt="hero"
                     src="/bg-hero1.webp"
                     fill
+                    sizes="100vw"
+                    priority
                     className={`${image === 1 ? "opacity-100" : "opacity-0"} transition-all duration-1000`}
                 />
                 <Image
                     alt="hero"
                     src="/bg-hero2.webp"
                     fill
+                    sizes="100vw"
                     className={`${image === 2 ? "opacity-100" : "opacity-0"} transition-all duration-1000`}
                 />
                 <Image
                     alt="hero"
                     src="/bg-hero3.webp"
                     fill
+                    sizes="100vw"
+                    priority
                     className={`${image === 3 ? "opacity-100" : "opacity-0"} transition-all duration-1000`}
                 />
                 <Image
                     alt="hero"
                     src="/bg-hero4.webp"
                     fill
+                    sizes="100vw"
                     className={`${image === 4 ? "opacity-100" : "opacity-0"} transition-all duration-1000`}
                 />
                 <Image
                     alt="hero"
                     src="/bg-hero5.webp"
                     fill
+                    sizes="100vw"
                     className={`${image === 5 ? "opacity-100" : "opacity-0"} transition-all duration-1000`}
                 />
                 <Image
                     alt="hero"
                     src="/bg-hero6.webp"
                     fill
+                    sizes="100vw"
                     className={`${image === 6 ? "opacity-100" : "opacity-0"} transition-all duration-1000`}
                 />
             </div>
             <div className="z-1 relative w-[650px] flex justify-center flex-col h-full gap-5 ml-20">
-                <h1 className="text-white text-5xl leading-snug">
+                <h1 className="text-5xl leading-snug text-white">
                     Find the perfect &nbsp;
                     <i>Freelance</i>
                     <br />
                     services for your business.
                 </h1>
-                    {/*
-                        z-1 relative w-[650px] flex justify-center flex-col h-full gap-5 ml-20のクラスを持つdiv要素は、
-                        テキストと検索バーを含むセクションのスタイルを設定。
-                        h1タグでメインメッセージを表示し、text-white、text-5xl、leading-snugのクラスでスタイルを設定。
-                    */}
-                <div className="flex align-middle">
+                {/*
+                    z-1 relative w-[650px] flex justify-center flex-col h-full gap-5 ml-20のクラスを持つdiv要素は、
+                    テキストと検索バーを含むセクションのスタイルを設定。
+                    h1タグでメインメッセージを表示し、text-white、text-5xl、leading-snugのクラスでスタイルを設定。
+                */}
+                <div className="flex items-center">
                     <div className="relative">
                         <input
                             type="text"
@@ -79,21 +87,21 @@ function HeroBanner() {
                             placeholder='Try "building mobile app"'
                         />
                     </div>
-                    <button className="bg-[#1DBF73] text-white px-12 text-lg fontsem rounded-r-md">Search</button>
+                    <button className="bg-[#1DBF73] text-white px-12 text-lg font-semibold rounded-r-md">Search</button>
                 </div>
-                <div className="text-white flex gap-4">
+                <div className="flex gap-4 text-white">
                     Popular:{" "}
                     <ul className="flex gap-5">
-                        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition">
+                        <li className="px-3 py-1 text-sm transition border rounded-full hover:bg-white hover:text-black">
                             Website Design
                         </li>
-                        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition">
+                        <li className="px-3 py-1 text-sm transition border rounded-full hover:bg-white hover:text-black">
                             Wordpress
                         </li>
-                        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition">
+                        <li className="px-3 py-1 text-sm transition border rounded-full hover:bg-white hover:text-black">
                             Logo Design
                         </li>
-                        <li className="text-sm py-1 px-3 border rounded-full hover:bg-white hover:text-black transition">
+                        <li className="px-3 py-1 text-sm transition border rounded-full hover:bg-white hover:text-black">
                             AI Services
                         </li>
                     </ul>

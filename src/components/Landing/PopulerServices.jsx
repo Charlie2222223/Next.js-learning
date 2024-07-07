@@ -58,7 +58,7 @@ function PopularServices() {
                 Popular Services
             </h2>
             <ul className="flex flex-wrap gap-16">
-                {popularServicesData.map(({ name, label, image }) => (
+                {popularServicesData.map(({ name, label, image }, index) => (
                     <li
                         key={name}
                         className="relative cursor-pointer"
@@ -68,8 +68,15 @@ function PopularServices() {
                             <span>{label}</span>
                             <h6 className="text-2xl font-extrabold">{name}</h6>
                         </div>
-                        <div className="h-80 w-72">
-                            <Image src={image} fill alt="service" />
+                        <div className="relative h-80 w-72">
+                            <Image
+                                src={image}
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                alt={`${name} service`}
+                                priority={index === 0} // 最初の画像のみ優先的にロード
+                                className="rounded-sm"
+                            />
                         </div>
                     </li>
                 ))}
