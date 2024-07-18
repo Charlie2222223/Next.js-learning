@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }) {
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
       <Head>
-        <link ref="shortcut icon" href="/favicon.ico" />
+        <link ref="shortcut icon" href="/favicon.ico"/>
         <title>Fiverr Clone</title>
       </Head>
       <div className="relative flex flex-col justify-between h-screen">  
